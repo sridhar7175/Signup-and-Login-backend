@@ -1,6 +1,7 @@
 var express = require("express");
 var router = express.Router();
 var signupData = require("../models/Signupdata");
+var bcrypt = require("bcryptjs");
 
 router
   .route("/signup")
@@ -14,6 +15,9 @@ router
       });
   })
   .post((req, res) => {
+    //encrypt password before save
+    //var hashedPassword=bcrypt.hashSync(req.body.password, 8);
+    //req.body.password=hashedPassword;
     var newsignup = new signupData.Signup(req.body);
     newsignup
       .save()
@@ -24,6 +28,16 @@ router
         res.status(500).send(err);
       });
   });
+
+router.get('/signin',(req,res)=>{
+  signupData.Signup.find()
+  .then((signups)=>{
+    res.status(200).send(signups)
+  })
+  .catch((err)=>{
+    res.status(500).send(err)
+  })
+})
 
 router.post("/signin", (req, res) => {
   signupData.Signup.findOne({
@@ -61,6 +75,38 @@ router
       .save()
       .then((product) => {
         res.status(200).send(product);
+      })
+      .catch((err) => {
+        res.status(500).send(err);
+      });
+  });
+router
+  .route("/product/:id")
+  .get((req, res) => {
+    var id = req.params.id;
+    signupData.Product.find({ _id: id })
+      .then((products) => {
+        res.status(200).send(products);
+      })
+      .catch((err) => {
+        res.status(500).send(err);
+      });
+  })
+  .put((req, res) => {
+    var id = req.params.id;
+    signupData.Product.findByIdAndUpdate(id, req.body, { new: true })
+      .then((products) => {
+        res.status(200).send(products);
+      })
+      .catch((err) => {
+        res.status(500).send(err);
+      });
+  })
+  .delete((req, res) => {
+    var id = req.params.id;
+    signupData.Product.findByIdAndDelete({ _id: id })
+      .then((products) => {
+        res.status(200).send(products);
       })
       .catch((err) => {
         res.status(500).send(err);
