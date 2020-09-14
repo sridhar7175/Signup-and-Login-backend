@@ -4,7 +4,7 @@ var cors = require("cors");
 app.use(cors());
 var bodyParser = require("body-parser");
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
+//app.use(bodyParser.urlencoded({ extended: true }));
 
 //var weatherapis = require("./routes/weatherapi");
 var signupapis = require("./routes/signupapi");

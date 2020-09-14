@@ -12,17 +12,17 @@ var signupSchema = mongoose.Schema({
   email: {
     type: String,
     required: true,
-    unique:true
+    unique: true,
   },
   password: {
     type: String,
     required: true,
   },
   role: {
-    type:String,
-    enum:['user','admin'],
-    default:'user',
-    required:true
+    type: String,
+    enum: ["user", "admin"],
+    default: "user",
+    required: true,
   },
 });
 exports.Signup = mongoose.model("Signup", signupSchema);
@@ -62,25 +62,10 @@ var productSchema = mongoose.Schema({
     type: Number,
     required: true,
   },
+  photo: {
+    data: Buffer,
+    contentType: String,
+  },
 });
 
 exports.Product = mongoose.model("Product", productSchema);
-
-
-
-var userSchema = mongoose.Schema({
-  name: {
-    type: String,
-    required: true,
-  },
-  email: {
-    type: String,
-    required: true,
-    unique:true
-  },
-  password: {
-    type: String,
-    required: true,
-  },
-});
-exports.User = mongoose.model("User", userSchema);
