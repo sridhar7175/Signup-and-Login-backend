@@ -111,28 +111,35 @@ exports.getproductid = (req, res) => {
 //Update Id
 
 exports.updateproduct = (req, res) => {
-  //   const {
-  //     productName,
-  //     productBrand,
-  //     productDescription,
-  //     productPrice,
-  //   } = req.body;
+//   const {
+//     productName,
+//     productBrand,
+//     productDescription,
+//     productPrice,
+//     id
+//   } = req.body;
 
-  //   let productPicture = [];
+//   let productPicture = [];
 
-  //   if(req.files.length > 0){
-  //     productPicture = req.files.map(file => {
-  //         return { img: file.filename }
-  //     });
-  // }
+//   if (req.files.length > 0) {
+//     productPicture = req.files.map((file) => {
+//       return { img: file.filename };
+//     });
+//   }
 
-  //   const product = new productData.Product({
-  //     productName: productName,
-  //     productBrand,
-  //     productDescription,
-  //     productPrice,
-  //     productPicture,
-  //   });
+//   productData.Product.update(
+//     { _id: id },
+//     { $set: { productName: productName, productBrand: productBrand, productDescription: productDescription,
+//     productPrice:productPrice,productPicture:productPicture } }
+//   )
+//   .then((product)=>{
+//     console.log(product);
+//     res.status(200).json(product);
+//   })
+//   .catch(err=>{
+//     res.status(500).json(err);
+// })
+  
   //   product.save((error, product) => {
   //     if (error) return res.status(400).json({ error });
   //     if (product) {
@@ -141,6 +148,7 @@ exports.updateproduct = (req, res) => {
   //       });
   //     }
   //   });
+
   var id = req.params.id;
   productData.Product.findByIdAndUpdate(id, req.body, { new: true })
     .then((products) => {
