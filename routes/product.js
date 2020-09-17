@@ -3,7 +3,7 @@ var router = express.Router();
 var {
   getproduct,
   createproduct,
-  getproductid,
+  getoneproduct,
   updateproduct,
   deleteproduct,
 } = require("../controllers/product");
@@ -27,7 +27,7 @@ const storage = multer.diskStorage({
 //Get
 router.get("/getproduct", getproduct);
 router.post("/createproduct",upload.array('productPicture'), createproduct);
-router.get("/getproduct/:id", getproductid);
+router.get("/getoneproduct/:id", getoneproduct);
 router.put("/updateproduct/:id",upload.array('productPicture'),updateproduct);
 router.delete("/deleteproduct/:id", deleteproduct);
 module.exports = router;
