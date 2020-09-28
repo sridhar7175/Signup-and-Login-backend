@@ -1,5 +1,6 @@
 //AddProducts
 var mongoose=require('mongoose')
+const { ObjectId } = mongoose.Schema;
 var productSchema = mongoose.Schema({
     productName: {
       type: String,
@@ -14,6 +15,11 @@ var productSchema = mongoose.Schema({
       required: true,
       maxlength: 2000,
     },
+    // category: {
+    //   type: ObjectId,
+    //   ref: "Category",
+    //   required: true
+    // },
     productPrice: {
       type: Number,
       required: true,

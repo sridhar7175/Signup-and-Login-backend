@@ -1,5 +1,5 @@
-const Cart = require('../models/cart');
-exports.addItemCart = (req, res) => {
+const Cart = require("../models/cart");
+exports.addItemToCart = (req, res) => {
   const cart = new Cart({
     user: req.user._id,
     cartItems: req.body.cartItems,

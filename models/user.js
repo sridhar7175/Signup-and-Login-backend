@@ -1,10 +1,16 @@
 var mongoose = require("mongoose");
-
-
 var signupSchema = mongoose.Schema({
   name: {
     type: String,
     required: true,
+  },
+  address:{
+   type:String,
+   trim:true
+  },
+  phone:{
+    type:String,
+    trim:true
   },
   email: {
     type: String,

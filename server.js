@@ -20,13 +20,17 @@ mongoose
   .then(() => {
     console.log("DB CONNECTED");
   });
+
+//Routes
 var authRoutes = require("./routes/auth");
 var productRoutes = require("./routes/product");
 var cartRoutes=require('./routes/cart')
+var categoryRoutes=require('./routes/category')
 app.use('/public', express.static(path.join(__dirname, 'uploads')));
 app.use("/api", authRoutes);
 app.use("/api", productRoutes);
 app.use('/api',cartRoutes)
+app.use('/api',categoryRoutes)
 
 //PORT
 const port = process.env.PORT || 5000;
