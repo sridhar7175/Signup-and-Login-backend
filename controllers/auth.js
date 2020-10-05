@@ -22,9 +22,10 @@ exports.signin = (req, res) => {
   })
     .then((sign) => {
       if (sign) {
-        res.status(200).send(sign);
+        res.status(200).send({ details: sign, status: true });
       } else {
-        res.status(404).send("User not found");
+        console.log("failed");
+        res.status(404).send({ message: "User not found", status: false });
       }
     })
     .catch((err) => {
@@ -53,17 +54,16 @@ exports.getUserDetails = (req, res) => {
 //     });
 // };
 
-exports.getOneUserIdDetails=(req,res)=>{
-  var id=req.params.id;
-  signupData.Signup.find({_id:id})
-  .then((userDetail)=>{
-    res.status(200).send(userDetail)
-  })
-  .catch((err)=>{
-    res.status(400).send(err)
-  })
-
-}
+exports.getOneUserIdDetails = (req, res) => {
+  var id = req.params.id;
+  signupData.Signup.find({ _id: id })
+    .then((userDetail) => {
+      res.status(200).send(userDetail);
+    })
+    .catch((err) => {
+      res.status(400).send(err);
+    });
+};
 
 exports.updateUserDetails = (req, res) => {
   var id = req.params.id;

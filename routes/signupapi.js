@@ -61,12 +61,6 @@ router
   });
   
 
-//Searching for a student
-router.get("/search/:productName", (req, res) => {
-  var regex = new RegExp(req.params.productName, "i");
-  signupData.Product.find({ productName: regex }).then((result) => {
-    res.status(200).json(result);
-  });
-});
+
 
 module.exports = router;

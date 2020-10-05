@@ -4,13 +4,13 @@ var signupSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  address:{
-   type:String,
-   trim:true
+  address: {
+    type: String,
+    trim: true,
   },
-  phone:{
-    type:String,
-    trim:true
+  phone: {
+    type: String,
+    trim: true,
   },
   email: {
     type: String,
@@ -21,12 +21,12 @@ var signupSchema = mongoose.Schema({
     type: String,
     required: true,
   },
-  role: {
-    type: String,
-    enum: ["user", "admin"],
-    default: "user",
-    required: true,
-  },
+  // role: {
+  //   type: String,
+  //   enum: ["user", "admin"],
+  //   default: "user",
+  //   required: true,
+  // },
 });
 
 exports.Signup = mongoose.model("Signup", signupSchema);
